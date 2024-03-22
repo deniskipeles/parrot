@@ -45,7 +45,7 @@
     li: "li list",
     blockquote: "blockquote italic border-l-4 border-gray-300 pl-4 mb-4",
     pre: "pre bg-gray-100 p-4 rounded mb-4",
-    code: "code bg-gray-100 px-1 rounded",
+    // code: "code bg-gray-100 px-1 rounded",
     img: "img w-auto mb-4",
     table: "table table-hover w-full text-left divide-y divide-gray-300 mb-4",
     th: "th font-bold bg-gray-100 px-4 py-2",
