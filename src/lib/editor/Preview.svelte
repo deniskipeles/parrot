@@ -92,43 +92,42 @@
   const toastStore = getToastStore();
   const change = () => {
     // Call the function to inject Tailwind classes into the HTML elements
-    injectTailwindClasses(tailwindClasses).
-    then(()=>{
-      //tableJsInjection()
-      // CodeBlock Highlight
-      document.querySelectorAll<HTMLPreElement>('pre code').forEach((elem, index) => {
-        const btn = document.createElement('button');
-        btn.innerText = ' Copy ';
-        btn.classList.add('btn');
-        btn.classList.add('variant-filled');
-        // btn.style.backgroundColor = '#f0f0f0';
-        btn.addEventListener('click', () => {
-          const code = elem.innerText;
-          navigator.clipboard
-            .writeText(code)
-            .then(() => {
-              const t: ToastSettings = { message: 'Code copied to clipboard.' };
-              toastStore.trigger(t);
-              btn.innerText = 'Copied ✔️';
-              // console.log(code);
-              setTimeout(() => {
-                btn.innerText = 'Copy';
-              }, 4000);
-            })
-            .catch((e) => {
-              console.log(e);
-              const t: ToastSettings = {
-                message: 'Failed to copy to clipboard.',
-                background: 'bg-red-500'
-              };
-              toastStore.trigger(t);
-            });
-        });
-        if (!elem.parentNode?.querySelector('button')) {
-          elem.parentNode?.prepend(btn);
-        }
-        hljs.highlightElement(elem);
+    injectTailwindClasses(tailwindClasses)
+    
+    //tableJsInjection()
+    // CodeBlock Highlight
+    document.querySelectorAll<HTMLPreElement>('pre code').forEach((elem, index) => {
+      const btn = document.createElement('button');
+      btn.innerText = ' Copy ';
+      btn.classList.add('btn');
+      btn.classList.add('variant-filled');
+      // btn.style.backgroundColor = '#f0f0f0';
+      btn.addEventListener('click', () => {
+        const code = elem.innerText;
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            const t: ToastSettings = { message: 'Code copied to clipboard.' };
+            toastStore.trigger(t);
+            btn.innerText = 'Copied ✔️';
+            // console.log(code);
+            setTimeout(() => {
+              btn.innerText = 'Copy';
+            }, 4000);
+          })
+          .catch((e) => {
+            console.log(e);
+            const t: ToastSettings = {
+              message: 'Failed to copy to clipboard.',
+              background: 'bg-red-500'
+            };
+            toastStore.trigger(t);
+          });
       });
+      if (!elem.parentNode?.querySelector('button')) {
+        elem.parentNode?.prepend(btn);
+      }
+      hljs.highlightElement(elem);
     });
     
   };
