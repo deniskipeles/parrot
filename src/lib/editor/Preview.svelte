@@ -16,12 +16,12 @@
     // Iterate through the object keys
     for (const [element, classes] of Object.entries(classesObj)) {
       // Get all elements matching the tag name inside <article>
-      const elements = document.querySelectorAll('article ' + element);
+      const elements = document.querySelectorAll("article " + element);
   
       // Iterate through each element
       for (let i = 0; i < elements.length; i++) {
-        // Split the classes string into an array
-        const classesArray = classes.split(' ');
+        // Split the classes string into an array and filter out empty strings
+        const classesArray = classes.split(" ").filter((c) => c.trim());
   
         // Add each class to the element
         for (const cssClass of classesArray) {
